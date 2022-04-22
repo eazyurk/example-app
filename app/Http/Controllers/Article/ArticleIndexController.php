@@ -15,7 +15,7 @@ final class ArticleIndexController extends Controller
 {
     public function __invoke(): Factory|View|Application
     {
-        $articles = Article::latest()->paginate(5);
+        $articles = Article::latest()->paginate(100);
 
         return view('articles.index', compact('articles'));
     }
