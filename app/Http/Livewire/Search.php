@@ -78,6 +78,8 @@ final class Search extends Component
                 ];
             }
         }
+
+        $this->reset('search');
     }
 
     public function render()

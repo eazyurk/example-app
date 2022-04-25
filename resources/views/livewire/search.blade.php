@@ -50,17 +50,17 @@
                     @foreach($searchResult as $result)
                         <tr>
                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                <div class="text-sm leading-5 text-gray-900">
-                                    {{ !empty($result['batch']) ? $result['batch']['batch']->batch_code : '' }}
+                                <div class="text-sm leading-5 text-gray-900" wire:key="{{ $loop->index }}">
+                                    {{ !empty($result['batch']['batch']->batch_code) ? $result['batch']['batch']->batch_code : '' }}
                                 </div>
                             </td>
                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                <div class="text-sm leading-5 text-gray-900">
-                                    {{ !empty($result['batch']) ? $result['batch']['batch']->amount : '' }}
+                                <div class="text-sm leading-5 text-gray-900" wire:key="{{ $loop->index }}">
+                                    {{ !empty($result['batch']['batch']->amount) ? $result['batch']['batch']->amount : '' }}
                                 </div>
                             </td>
                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                <div class="text-sm leading-5 text-gray-900">
+                                <div class="text-sm leading-5 text-gray-900" wire:key="{{ $loop->index }}">
                                     {{ $result['reason'] }}
                                 </div>
                             </td>
