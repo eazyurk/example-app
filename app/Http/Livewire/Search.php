@@ -16,8 +16,8 @@ final class Search extends Component
     public ?array $searchResult = null;
 
     protected $rules = [
-        'search.*.article' => 'int',
-        'search.*.amount' => 'int',
+        'search.*.article' => 'int|required',
+        'search.*.amount' => 'int|required',
     ];
 
     public function submit()
@@ -25,10 +25,6 @@ final class Search extends Component
         $this->validate();
 
         if (empty($this->search)) {
-            $this->searchResult[] = [
-                'batch' => null,
-                'reason' => 'No match found',
-            ];
             return;
         }
 

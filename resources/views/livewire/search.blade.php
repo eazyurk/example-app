@@ -10,7 +10,7 @@
             <div class="mb-6 flex">
                 <div class="flex-1">
                     <label for="search[{{ $i }}][article]" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Selecteer artikel</label>
-                    <select id="search[{{ $i }}][article]" wire:model="search.{{ $i }}.article" name="search[{{ $i }}][article]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <select id="search[{{ $i }}][article]" wire:model.defer="search.{{ $i }}.article" name="search[{{ $i }}][article]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <option value="">-</option>
                         @foreach($articles as $article)
                             <option value="{{ $article->id }}">{{ $article->article_code }}</option>
@@ -19,7 +19,7 @@
                 </div>
                 <div class="flex-1 ml-4">
                     <label for="search[{{ $i }}][amount]" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Aantal</label>
-                    <input type="number" id="search[{{ $i }}][amount]" wire:model="search.{{ $i }}.amount" name="search[{{ $i }}][amount]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Aantal">
+                    <input type="number" id="search[{{ $i }}][amount]" wire:model.defer="search.{{ $i }}.amount" name="search[{{ $i }}][amount]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Aantal">
                 </div>
             </div>
         @endfor
@@ -48,7 +48,7 @@
                 </thead>
                 <tbody class="bg-white">
                     @foreach($searchResult as $result)
-                        <tr>
+                        <tr wire:key="{{ $loop->index }}">
                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                 <div class="text-sm leading-5 text-gray-900" wire:key="{{ $loop->index }}">
                                     {{ !empty($result['batch']['batch']->batch_code) ? $result['batch']['batch']->batch_code : '' }}
