@@ -16,20 +16,30 @@ final class Search extends Component
     public ?array $searchResult = null;
 
     protected $rules = [
-        'search.*.article' => 'string',
-        'search.*.amount' => 'integer',
+        'search.*.article' => 'int',
+        'search.*.amount' => 'int',
     ];
 
     public function submit()
     {
         $this->validate();
 
+        if (empty($this->search)) {
+            $this->searchResult[] = [
+                'batch' => null,
+                'reason' => 'No match found',
+            ];
+            return;
+        }
+
         foreach ($this->search as $key => $search) {
+            $this->searchResult[$key] = [
+                'batch' => null,
+                'reason' => 'No match found',
+            ];
+
             //Find where batch is fully used (so where amount of batch is the same as amount submitted)
-            $fullyUsedBatch = DB::table('batches')
-                ->where('article_id', $search['article'])
-                ->where('amount', $search['amount'])
-                ->get();
+            $fullyUsedBatch = Batch::getBatchByArticleAndAmount((int)$search['article'], (int)$search['amount']);
 
             if (!$fullyUsedBatch->isEmpty()) {
                 $batch = $fullyUsedBatch->first();
@@ -41,19 +51,14 @@ final class Search extends Component
                 continue;
             }
 
-            $allBatches = DB::table('batches')
-                ->where('article_id', $search['article'])
-                ->orderBy('amount', 'DESC')
-                ->get();
-
+            $allBatches = Batch::getAllBatchesForArticle((int)$search['article'], (int)$search['amount']);
             //Find batch where less than 5% is remaining
-            if (!isset($this->searchResult[$key])) {
+            if ($this->searchResult[$key]['batch'] === null && $allBatches->isNotEmpty()) {
                 foreach ($allBatches as $batch) {
                     //First calculate remainder
                     $remainder = $batch->amount - $search['amount'];
                     //Calculate percentage left
                     $percentageRemaining = ($remainder / $batch->amount) * 100;
-
                     //If percentage is less than 5 percent and remainder is not negative take that batch
                     if ($percentageRemaining <= 5 && $remainder > 0) {
                         $this->searchResult[$key] = [
@@ -65,7 +70,7 @@ final class Search extends Component
             }
 
             //To get the batch where most is remaining we take the batch with the highest amount
-            if (!isset($this->searchResult[$key])) {
+            if ($this->searchResult[$key]['batch'] === null && $allBatches->isNotEmpty()) {
                 $batch = $allBatches->first();
                 $this->searchResult[$key] = [
                     'batch' => compact('batch'),

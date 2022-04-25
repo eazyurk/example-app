@@ -15,8 +15,6 @@ final class FinderIndexController extends Controller
 {
     public function __invoke(): Factory|View|Application
     {
-        $articles = Article::all();
-
-        return view('finder.index', compact('articles'));
+        return view('finder.index');
     }
 }

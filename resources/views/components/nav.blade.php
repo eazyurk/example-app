@@ -7,13 +7,19 @@
     <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-gray-100 md:bg-transparent z-20" id="nav-content">
         <ul class="list-reset lg:flex justify-end flex-1 items-center">
             <li class="mr-3">
-                <a class="inline-block py-2 px-4 text-gray-900 font-bold no-underline" href="#">Artikelen</a>
+                <a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-2 px-4" href="{{ route('articles.index') }}">
+                    Artikelen
+                </a>
             </li>
             <li class="mr-3">
-                <a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-2 px-4" href="#">link</a>
+                <a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-2 px-4" href="{{ route('batches.index') }}">
+                    Batches
+                </a>
             </li>
             <li class="mr-3">
-                <a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-2 px-4" href="#">link</a>
+                <a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-2 px-4" href="{{ route('finder.index') }}">
+                    Zoeken
+                </a>
             </li>
         </ul>
     </div>

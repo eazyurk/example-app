@@ -1,16 +1,15 @@
 @extends('layouts.master')
 
 @section('content')
-    <div class="mb-4">
-        <h1 class="text-3xl font-bold underline decoration-gray-400">Artikel overzicht</h1>
-        @if (session()->has('message'))
-            <div class="p-3 rounded bg-green-500 text-green-100 my-2">
-                {{ session('message') }}
-            </div>
-        @endif
-        <div class="flex justify-end">
+    <div class="mb-4 flex">
+        <div>
+            <h1 class="text-3xl font-bold decoration-gray-400">Artikel overzicht</h1>
+        </div>
+        <div class="flex-1">
             <a href="{{ route('articles.create') }}"
-               class="px-4 py-2 rounded-md bg-sky-500 text-sky-100 hover:bg-sky-600">Artikel aanmaken</a>
+               class="float-right text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                Artikel aanmaken
+            </a>
         </div>
     </div>
     <div class="flex flex-col">
@@ -28,7 +27,12 @@
                             class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
                             Artikel code
                         </th>
-                        <th>
+                        <th
+                            class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
+                            &nbsp;
+                        </th>
+                        <th
+                            class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
                             &nbsp;
                         </th>
                     </tr>

@@ -46,10 +46,7 @@ Route::post('batches/{batch}/update', [BatchUpdateController::class, 'store'])->
 Route::delete('batches/{batch}/delete', [BatchDeleteController::class, 'delete'])->name('batches.delete');
 
 //Finder routes
-Route::get('finder', [FinderIndexController::class, '__invoke']);
-
-Route::get('finder/search', [FinderSearchController::class, 'search']);
-Route::post('finder/search', [FinderSearchController::class, 'store'])->name('finder.search.store');
+Route::get('finder', [FinderIndexController::class, '__invoke'])->name('finder.index');
 
 Route::get('/', function () {
     return view('welcome');

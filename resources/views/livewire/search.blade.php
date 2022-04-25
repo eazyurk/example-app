@@ -1,6 +1,10 @@
 <div class="w-4/5 m-auto">
-    <h1 class="mb-4">Batch zoeken</h1>
-    <form wire:submit.prevent="submit" method="POST" enctype="multipart/form-data">
+    <div class="mb-4 flex">
+        <div>
+            <h1 class="text-xl font-bold decoration-gray-400">Batch zoeken</h1>
+        </div>
+    </div>
+    <form wire:submit.prevent="submit" class="border-black bg-gray-50 p-3 rounded pb-12" method="POST" enctype="multipart/form-data">
         @csrf
         @for ($i = 0; $i <= 2; $i++)
             <div class="mb-6 flex">
@@ -19,17 +23,51 @@
                 </div>
             </div>
         @endfor
-        <button type="submit" class="text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Aanmaken</button>
+        <button type="submit" class="float-right text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            Zoeken
+        </button>
     </form>
-    <div>
+    <div class="mt-5">
         @if($searchResult)
-            @foreach($searchResult as $result)
-                Best batch is: <br>
-                {{ $result['batch']['batch']->batch_code }} <br>
-                {{ $result['batch']['batch']->amount }} <br>
-                {{ $result['reason'] }} <br>
-                <hr>
-            @endforeach
+            <table class="min-w-full">
+                <thead>
+                    <tr>
+                        <th
+                            class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
+                            Batch Code
+                        </th>
+                        <th
+                            class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
+                            Batch aantal
+                        </th>
+                        <th
+                            class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
+                            Reden
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="bg-white">
+                    @foreach($searchResult as $result)
+                        <tr>
+                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                <div class="text-sm leading-5 text-gray-900">
+                                    {{ !empty($result['batch']) ? $result['batch']['batch']->batch_code : '' }}
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                <div class="text-sm leading-5 text-gray-900">
+                                    {{ !empty($result['batch']) ? $result['batch']['batch']->amount : '' }}
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                <div class="text-sm leading-5 text-gray-900">
+                                    {{ $result['reason'] }}
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
         @endif
     </div>
 </div>
