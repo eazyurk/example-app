@@ -8,6 +8,8 @@ use App\Http\Controllers\Batch\BatchCreateController;
 use App\Http\Controllers\Batch\BatchDeleteController;
 use App\Http\Controllers\Batch\BatchIndexController;
 use App\Http\Controllers\Batch\BatchUpdateController;
+use App\Http\Controllers\Finder\FinderIndexController;
+use App\Http\Controllers\Finder\FinderSearchController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,6 +44,12 @@ Route::get('batches/{batch}/update', [BatchUpdateController::class, 'update'])->
 Route::post('batches/{batch}/update', [BatchUpdateController::class, 'store'])->name('batches.update.store');
 
 Route::delete('batches/{batch}/delete', [BatchDeleteController::class, 'delete'])->name('batches.delete');
+
+//Finder routes
+Route::get('finder', [FinderIndexController::class, '__invoke']);
+
+Route::get('finder/search', [FinderSearchController::class, 'search']);
+Route::post('finder/search', [FinderSearchController::class, 'store'])->name('finder.search.store');
 
 Route::get('/', function () {
     return view('welcome');

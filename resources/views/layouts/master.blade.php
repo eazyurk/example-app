@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     @include('components.header')
+    @livewireStyles
 </head>
 <body class="bg-gray-100 font-sans leading-normal tracking-normal">
     <nav id="header" class="fixed w-full z-10 top-0">
@@ -13,5 +14,6 @@
             @yield('content')
         </div>
     </div>
+    @livewireScripts
 </body>
 </html>
