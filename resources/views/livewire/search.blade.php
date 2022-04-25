@@ -9,8 +9,8 @@
         @for ($i = 0; $i <= 2; $i++)
             <div class="mb-6 flex">
                 <div class="flex-1">
-                    <label for="search[{{ $i }}][article]" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Selecteer artikel</label>
-                    <select id="search[{{ $i }}][article]" wire:model.defer="search.{{ $i }}.article" name="search[{{ $i }}][article]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <label for="search[{{ $i }}][article]" class="block mb-2 text-sm font-medium text-gray-900">Selecteer artikel</label>
+                    <select id="search[{{ $i }}][article]" wire:model.defer="search.{{ $i }}.article" name="search[{{ $i }}][article]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                         <option value="">-</option>
                         @foreach($articles as $article)
                             <option value="{{ $article->id }}">{{ $article->article_code }}</option>
@@ -18,12 +18,12 @@
                     </select>
                 </div>
                 <div class="flex-1 ml-4">
-                    <label for="search[{{ $i }}][amount]" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Aantal</label>
-                    <input type="number" id="search[{{ $i }}][amount]" wire:model.defer="search.{{ $i }}.amount" name="search[{{ $i }}][amount]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Aantal">
+                    <label for="search[{{ $i }}][amount]" class="block mb-2 text-sm font-medium text-gray-900">Aantal</label>
+                    <input type="number" id="search[{{ $i }}][amount]" wire:model.defer="search.{{ $i }}.amount" name="search[{{ $i }}][amount]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Aantal">
                 </div>
             </div>
         @endfor
-        <button type="submit" class="float-right text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+        <button type="submit" class="float-right text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">
             Zoeken
         </button>
     </form>

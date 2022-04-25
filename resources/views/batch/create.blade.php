@@ -8,7 +8,7 @@
             </div>
             <div class="flex-1">
                 <a href="{{ route('batches.index') }}"
-                   class="float-right text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                   class="float-right text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2">
                     Terug naar overzicht
                 </a>
             </div>
@@ -16,22 +16,22 @@
         <form action="{{ route('batches.create.store') }}" class="border-black bg-gray-50 p-3 rounded pb-12" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-6">
-                <label for="article_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Selecteer artikel</label>
-                <select id="article_id" name="article_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <label for="article_id" class="block mb-2 text-sm font-medium text-gray-900">Selecteer artikel</label>
+                <select id="article_id" name="article_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                     @foreach($articles as $article)
                         <option value="{{ $article->id }}">{{ $article->article_code }}</option>
                     @endforeach
                 </select>
             </div>
             <div class="mb-6">
-                <label for="batch_code" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Batch code</label>
-                <input type="text" id="batch_code" name="batch_code" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Batch code" required="">
+                <label for="batch_code" class="block mb-2 text-sm font-medium text-gray-900">Batch code</label>
+                <input type="text" id="batch_code" name="batch_code" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Batch code" required="">
             </div>
             <div class="mb-6">
-                <label for="amount" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Aantal</label>
-                <input type="number" id="amount" name="amount" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Aantal" required="">
+                <label for="amount" class="block mb-2 text-sm font-medium text-gray-900">Aantal</label>
+                <input type="number" id="amount" name="amount" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Aantal" required="">
             </div>
-            <button type="submit" class="float-right text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Aanmaken</button>
+            <button type="submit" class="float-right text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Aanmaken</button>
         </form>
     </div>
 @stop
