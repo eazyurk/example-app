@@ -13,7 +13,7 @@ final class Search extends Component
 {
     public ?array $search = null;
 
-    public $searchResult = null;
+    public ?array $searchResult = null;
 
     protected $rules = [
         'search.*.article' => 'string',
@@ -64,7 +64,7 @@ final class Search extends Component
                 }
             }
 
-            //To get the batch where most is remaining we take the batch with the most amount
+            //To get the batch where most is remaining we take the batch with the highest amount
             if (!isset($this->searchResult[$key])) {
                 $batch = $allBatches->first();
                 $this->searchResult[$key] = [
