@@ -10,7 +10,8 @@ class Search extends Component
     public $search;
 
     protected $rules = [
-        'search' => 'required'
+        'search.*.article' => 'string',
+        'search.*.amount' => 'integer',
     ];
 
     public function submit()
