@@ -21,4 +21,15 @@
         @endfor
         <button type="submit" class="text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Aanmaken</button>
     </form>
+    <div>
+        @if($searchResult)
+            @foreach($searchResult as $result)
+                Best batch is: <br>
+                {{ $result['batch']['batch']->batch_code }} <br>
+                {{ $result['batch']['batch']->amount }} <br>
+                {{ $result['reason'] }} <br>
+                <hr>
+            @endforeach
+        @endif
+    </div>
 </div>

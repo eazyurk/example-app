@@ -12,7 +12,7 @@ final class BatchIndexController extends Controller
 {
     public function __invoke()
     {
-        $batches = Batch::latest()->paginate(5);
+        $batches = Batch::latest()->paginate(100);
 
         return view('batch.index', compact('batches'));
     }
